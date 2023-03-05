@@ -85,11 +85,6 @@ export default {
           title: 'App',
           to: '/',
         },
-        {
-          icon: 'mdi-account',
-          title: 'Account',
-          to: '/account',
-        },
       ],
     }
   },
