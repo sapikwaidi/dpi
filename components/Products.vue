@@ -2,21 +2,19 @@
     <v-row>
         <v-col 
             cols="2"
-            v-for="(item, index) in products"
-            :key="index"
-        >
-            <v-card
-                
-            >
+            v-for="(product, index) in products"
+            :key="index">
+            <v-card 
+            :title="product.title"
+            :ripple="true">
                 <v-card-actions>
-                    <v-img :src="require(`@/assets/images/products/${item.thumbnail}`)"></v-img>
+                    <v-img :src="require(`@/assets/images/products/${product.thumbnail}`)" />
                 </v-card-actions>
                     
                 <v-card-text 
                     align="center"
-                    class="product-title"
-                >
-                    {{ item.title }}
+                    class="product-title">
+                        {{ product.title }}
                 </v-card-text>
             </v-card>
         </v-col>
