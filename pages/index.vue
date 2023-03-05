@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col cols="8">
+    <v-col cols="8" class="frame-content">
       <Products/>
     </v-col>
 
@@ -15,3 +15,10 @@ export default {
   name: 'IndexPage',
 }
 </script>
+
+<style>
+.frame-content{
+  height:90vh;
+  overflow-y: auto;
+}
+</style>
