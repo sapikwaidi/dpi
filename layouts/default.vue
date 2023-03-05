@@ -27,30 +27,27 @@
 
     <!-- contain -->
     <v-main>
-      <v-container>
+      <v-container fluid>
         <Nuxt />
       </v-container>
     </v-main>
 
     <v-bottom-navigation 
-      fixed
-      horizontal
-      color="primary"
-      height="10vh"
-      app
-    >
+    fixed
+    horizontal
+    color="primary"
+    height="10vh"
+    app>
       <v-app-bar-nav-icon
-        @click.stop="sideDrawer = !sideDrawer"
-        v-ripple="false"
-        plain
-      />
+      @click.stop="sideDrawer = !sideDrawer"
+      v-ripple="false"
+      plain/>
         <v-btn
-          v-for="(item, index) in bottomMenu"
-          :key="index"
-          :to="item.to"
-          v-ripple="false"
-          plain 
-        >
+        v-for="(item, index) in bottomMenu"
+        :key="index"
+        :to="item.to"
+        v-ripple="false"
+        plain>
           <span>{{ item.title }}</span>
           <v-icon>{{ item.icon }}</v-icon>
         </v-btn>
