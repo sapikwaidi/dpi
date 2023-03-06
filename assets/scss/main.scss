@@ -1,0 +1,21 @@
+.frame-content{
+    height: 90vh;
+    overflow-y: auto;
+}
+
+/* width and height scroll bar */
+.frame-content::-webkit-scrollbar{
+    width: 5px;
+}
+
+/* model and track color */
+.frame-content::-webkit-scrollbar-track{
+    background-color: #fff6f6;
+    border-radius: 100px;
+}
+
+/* model and scroll bar color */
+.frame-content::-webkit-scrollbar-thumb{
+    background-color: #dbdbdb;
+    border-radius: 100px;
+}
