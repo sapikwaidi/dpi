@@ -10,7 +10,7 @@
     cols="4" 
     class="frame-content">
       <!-- ORDER -->
-      <Products/>
+      <!-- <Products/> -->
     </v-col>
   </v-row>
 </template>
