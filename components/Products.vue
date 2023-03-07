@@ -6,7 +6,7 @@
             </v-col>
             <v-col cols="2">
                 <v-menu>
-                    <template v-slot:activator="{ on:category }">
+                    <template v-slot:activator="{ on: category }">
                         <v-btn
                         v-on="category"
                         color="primary">
@@ -15,13 +15,11 @@
                     </template>
 
                     <v-list>
-                        <v-list-item-group>
-                            <v-list-item
-                            v-for="(category, index) in categories"
-                            :key="index">
-                                <v-list-item-title>
-                                    {{ category.title }}
-                                </v-list-item-title>
+                        <v-list-item-group v-model="categoryId">
+                            <v-list-item v-for="(category, index) in categories"
+                            :key="index"
+                            :value="category.id">
+                                <v-list-item-title>{{ category.title }}</v-list-item-title>
                             </v-list-item>
                         </v-list-item-group>
                     </v-list>
@@ -32,7 +30,7 @@
         <v-row>
             <v-col 
                 cols="2"
-                v-for="(product, index) in products"
+                v-for="(product, index) in filteredProducts"
                 :key="index">
                 <v-card 
                 :title="product.title"
@@ -56,7 +54,9 @@
 export default ({
     data(){
         return{
+            categoryId: false,
             categories:[
+                {id: false, title: "All"},
                 {id: 1, title: "Smartphone"},
                 {id: 2, title: "Camera"},
                 {id: 3, title: "Televisi"},
@@ -80,13 +80,15 @@ export default ({
             ],
         }
     },
+    computed:{
+        filteredProducts(){
+            console.log(this.categoryId)
+            if(this.categoryId){
+                return this.products.filter(s => s.categoryId==this.categoryId)
+            }
+            return this.products
+        }
+    }
 })
 </script>
 
-<style scope>
-    .product-title{
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-</style>
