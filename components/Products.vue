@@ -18,7 +18,8 @@
                         <v-list-item-group v-model="categoryId">
                             <v-list-item v-for="(category, index) in categories"
                             :key="index"
-                            :value="category.id">
+                            :value="category.id"
+                            :disabled="category.id == categoryId">
                                 <v-list-item-title>{{ category.title }}</v-list-item-title>
                             </v-list-item>
                         </v-list-item-group>
