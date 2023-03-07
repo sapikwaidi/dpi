@@ -2,7 +2,11 @@
     <v-row>
         <v-row>
             <v-col cols="10">
-                SEARCH
+                <v-autocomplete 
+                label="Products"
+                placeholder="start typing to search">
+                    SEARCH
+                </v-autocomplete>
             </v-col>
             <v-col cols="2">
                 <v-menu>
@@ -28,6 +32,7 @@
             </v-col>
         </v-row>
 
+        <!-- show data products -->
         <v-row>
             <v-col 
                 cols="2"
