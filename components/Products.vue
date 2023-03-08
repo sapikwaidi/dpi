@@ -4,7 +4,9 @@
             <v-col cols="10">
                 <v-autocomplete 
                 label="Products"
-                placeholder="start typing to search">
+                placeholder="start typing to search"
+                :search-input.sync="search"
+                :loading="isLoading">
                     SEARCH
                 </v-autocomplete>
             </v-col>
@@ -84,6 +86,8 @@ export default ({
                 {id: 14, title: 'Samsung Galaxy Note', thumbnail: 'samsung-galaxy-note-3.png', price: 4100000, categoryId: 1},
                 {id: 15, title: 'Sharp 32 Led 32LE265i', thumbnail: 'sharp-32-led-32LE265i.png', price: 2300000, categoryId: 3},
             ],
+            search: null,
+            isLoading: false,
         }
     },
     computed:{
@@ -93,6 +97,15 @@ export default ({
                 return this.products.filter(s => s.categoryId==this.categoryId)
             }
             return this.products
+        }
+    },
+    watch:{
+        search(val){
+            console.log(val)
+            this.isLoading=true
+            setTimeout(() => {
+                this.isLoading=false
+            }, 1000);
         }
     }
 })
