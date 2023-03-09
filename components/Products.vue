@@ -1,6 +1,7 @@
 <template>
     <v-row>
         <v-row>
+            <!-- button search -->
             <v-col cols="10">
                 <v-autocomplete 
                 label="Products"
@@ -9,10 +10,13 @@
                 :loading="isLoading"
                 :items="itemSearch"
                 item-text="title"
-                item-value="id">
+                item-value="id"
+                v-model="selectedSearch"
+                return-object>
                     SEARCH
                 </v-autocomplete>
             </v-col>
+            <!-- button category -->
             <v-col cols="2">
                 <v-menu>
                     <template v-slot:activator="{ on: category }">
@@ -92,13 +96,19 @@ export default ({
             search: null,
             isLoading: false,
             itemSearch: [],
+            selectedSearch: null,
         }
     },
     computed:{
         filteredProducts(){
-            console.log(this.categoryId)
+            
             if(this.categoryId){
+                console.log(this.categoryId)
                 return this.products.filter(s => s.categoryId==this.categoryId)
+            } 
+            else if(this.selectedSearch){
+                // console.log('ini selectedSearch '+this.selectedSearch)
+                return this.products.filter(s => s.title == this.selectedSearch.title)
             }
             return this.products
         }
@@ -108,8 +118,7 @@ export default ({
             // console.log(val)
             this.isLoading=true
             this.itemSearch = this.products.filter(e => {
-                // console.log(e)
-                // console.log(e.id)
+                console.log('ini e title: '+e.title)
                 return e.title
             })
             setTimeout(() => {
