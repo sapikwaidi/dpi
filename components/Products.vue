@@ -101,9 +101,9 @@ export default ({
     },
     computed:{
         filteredProducts(){
-            
+            // console.log(this.categoryId)
             if(this.categoryId){
-                console.log(this.categoryId)
+                // console.log(this.categoryId)
                 return this.products.filter(s => s.categoryId==this.categoryId)
             } 
             else if(this.selectedSearch){
@@ -113,12 +113,19 @@ export default ({
             return this.products
         }
     },
+    methods:{
+        resetSearchCategory(){
+            this.categoryId=false
+        }
+    },
     watch:{
         search(val){
             // console.log(val)
             this.isLoading=true
+            this.resetSearchCategory()
+            // console.log(this.categoryId)
             this.itemSearch = this.products.filter(e => {
-                console.log('ini e title: '+e.title)
+                // console.log('ini e title: '+e.title)
                 return e.title
             })
             setTimeout(() => {
