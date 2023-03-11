@@ -12,7 +12,8 @@
                 item-text="title"
                 item-value="id"
                 v-model="selectedSearch"
-                return-object>
+                return-object
+                hide-no-data>
                     SEARCH
                 </v-autocomplete>
             </v-col>
@@ -104,6 +105,7 @@ export default ({
             // console.log(this.categoryId)
             if(this.categoryId){
                 // console.log(this.categoryId)
+                this.resetSelectedSearch()
                 return this.products.filter(s => s.categoryId==this.categoryId)
             } 
             else if(this.selectedSearch){
@@ -116,6 +118,9 @@ export default ({
     methods:{
         resetSearchCategory(){
             this.categoryId=false
+        },
+        resetSelectedSearch(){
+            this.selectedSearch=null
         }
     },
     watch:{
